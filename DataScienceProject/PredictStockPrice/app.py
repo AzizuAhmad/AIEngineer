@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 model = load_model('stockPrediction.keras')
 
-st.header('Stock Market PRediction')
+st.header('Stock Market Prediction')
 
 stock = st.text_input('Enter Stock Symbol', "GOOG")
 start = '2012-01-01'
