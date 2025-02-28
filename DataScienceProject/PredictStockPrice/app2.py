@@ -11,7 +11,7 @@ import requests
 st.set_page_config(layout="wide")
 
 # Application title
-st.title("📈 Stock Prediction Application with Prophet and Altair")
+st.title("📈 Stock Prediction Application with Prophet Algorithm")
 st.markdown("""
 This application allows you to visualize historical stock data, perform future price predictions using Facebook's Prophet model, and stay updated with the latest news related to your selected stock.
 """)
