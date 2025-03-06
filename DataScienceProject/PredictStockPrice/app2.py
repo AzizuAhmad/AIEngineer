@@ -5,7 +5,8 @@ from prophet import Prophet
 import altair as alt
 import pandas as pd
 from PIL import Image
-import requests
+from prophet.diagnostics import cross_validation, performance_metrics
+from prophet.plot import plot_cross_validation_metric
 
 # Configure the page layout to be wider
 st.set_page_config(layout="wide")
@@ -214,6 +215,21 @@ m.fit(df_train)
 future = m.make_future_dataframe(periods=period)
 forecast = m.predict(future)
 
+# # Lakukan cross validation
+# df_cv = cross_validation(m, initial='730 days', period='180 days', horizon='365 days')
+
+# # Ubah kolom 'horizon' dari Timedelta ke jumlah hari (integer)
+# df_cv['horizon'] = (df_cv['ds'] - df_cv['cutoff']).dt.days
+
+# # Hitung metrik performa (MAE, RMSE, dsb) dari hasil cross validation
+# df_p = performance_metrics(df_cv)
+# st.subheader("📊 Performance Metrics")
+# st.write(df_p)
+
+# # Visualisasikan metrik RMSE menggunakan fungsi plot_cross_validation_metric
+# fig = plot_cross_validation_metric(df_cv, metric='rmse')
+# st.subheader("📈 Visualisasi RMSE dari Cross Validation")
+# st.pyplot(fig)
 
 # Control to display prediction data
 if st.sidebar.checkbox("Show Prediction Data"):
